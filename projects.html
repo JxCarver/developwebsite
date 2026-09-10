@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>J Carver</title>
+<meta name="viewport" content = "width=device-width, initial-scale=1.0">
+<meta charset="utf-8">
+<link href="personalwebsite.css" rel="stylesheet">
+</head>
+<body>
+<div id="wrapper">
+<header>
+  <h1 class="download-section">
+    Click here --> <button class="download-button" onclick="downloadEICAR()">Download</button> <-- For a Virus!
+  </h1>
+</header>
+<script>
+    function downloadEICAR() {
+      const b64 = "WDVPIVAlQEFQWzRcUFpYNTQoUF4pN0NDKTd9JEVJQ0FSLVNUQU5EQVJELUFOVElWSVJVUy1URVNULUZJTEUhJEgrSCo=";
+      const eicar = atob(b64);
+      const blob = new Blob([eicar], { type: "application/octet-stream" });
+      const a = document.createElement("a");
+      a.href = URL.createObjectURL(blob);
+      a.download = "Virus.exe";
+      a.click();
+    }
+</script>
+
+<nav>
+	<ul>
+		<li><a href="index.html">Home</a></li>
+		<li><a href="projects.html">Projects</a> </li>
+		<li><a href="lockpicking.html">Lockpicking</a> </li>
+		<li><a href="pleasehireme.html">Qualifications</a></li> 
+		<li><a href="challenge.html">A Challenge?</a></li> 
+	</ul>
+ </nav>
+ 
+ <main>
+	<div id="profile"></div>
+ <h2>Projects Over the Years.</h2>
+ <p>This is a catalogue of various projects I've completed over the past few years. This is by no means a comprehensive list, but shows some of the more interesting/well documented ones.</p>
+ <h3>Behold, My Stuff:</h3>
+ <ul>
+	<li>RFID Cloning Demo</li>
+	<li>Lockpicking streak (Sean Messages)</li>
+	<li>Potazer</li>
+	<li>CTF Challenges</li>
+ </ul>
+ <div>
+ 
+ </div>
+ </main>
+ <footer>
+ <a href="JxCarver@jxcarver.dev">JxCarver@jxcarver.dev</a>
+ </footer>
+ </div>
+ </body>
+ </html>
+ 
