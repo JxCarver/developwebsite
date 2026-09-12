@@ -35,6 +35,19 @@
     font-weight: bold;
   }
 
+  .accept-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #0000F0;
+    color: white;
+    text-decoration: none;
+    border: 2px solid #0000F0;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: inherit;
+    font-weight: bold;
+  }
+
   .download-button:hover {
     background-color: #000050;
   }
