@@ -70,12 +70,13 @@ async function login() {
     const data = await res.json();
     msg.textContent = data.message;
 
-  } catch (error) {
+  } catch (err) {
+    console.error(err);
     msg.textContent = "Could not connect to server.";
-    console.error(error);
   }
 }
 </script>
+
 
  </div>
  </main>
