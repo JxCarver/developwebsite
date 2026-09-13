@@ -38,10 +38,10 @@
   .accept-button {
     display: inline-block;
     padding: 10px 20px;
-    background-color: #ff0090;
+    background-color: #000090;
     color: white;
     text-decoration: none;
-    border: 2px solid #ff0090;
+    border: 2px solid #000090;
     border-radius: 5px;
     cursor: pointer;
     font-size: inherit;
