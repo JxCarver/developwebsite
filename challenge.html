@@ -41,7 +41,7 @@
  <p>I present to you a hacking challenge. There is no reward for completion other than personal glory.</p>
  <h3>Do you accept this challenge?</h3>
  <div>
-  <h3 class="download-section">
+  <h3>
 <button class="accept-button" onclick="document.getElementById('login').style.display='block'; this.style.display='none';">
   Accept
 </button>
@@ -54,20 +54,28 @@
 
 <script>
 async function login() {
-  const res = await fetch("https://hashcheck.jamesxcarver.workers.dev/", {
-    method: "POST",
-    headers: {"Content-Type": "application/json"},
-    body: JSON.stringify({
-      password: document.getElementById("password").value
-    })
-  });
+  const msg = document.getElementById("msg");
 
-  const data = await res.json();
-  document.getElementById("msg").textContent =
-    data.success ? "Logged in!" : "Wrong password.";
+  try {
+    const res = await fetch("https://hashcheck.jamesxcarver.workers.dev/", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        password: document.getElementById("password").value
+      })
+    });
+
+    const data = await res.json();
+    msg.textContent = data.message;
+
+  } catch (error) {
+    msg.textContent = "Could not connect to server.";
+    console.error(error);
+  }
 }
 </script>
-
 
  </div>
  </main>
