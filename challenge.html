@@ -54,30 +54,29 @@
 
 <script>
 async function login() {
-  const msg = document.getElementById("msg");
+  const password = document.getElementById("password").value + "$4lt";
 
-  try {
-    const res = await fetch("https://hashcheck.jamesxcarver.workers.dev/", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        password: document.getElementById("password").value
-      })
-    });
+  const hashBuffer = await crypto.subtle.digest(
+    "SHA-256",
+    new TextEncoder().encode(password)
+  );
 
-    const data = await res.json();
-    msg.textContent = data.message;
+  const hash = Array.from(new Uint8Array(hashBuffer))
+    .map(b => b.toString(16).padStart(2, "0"))
+    .join("");
 
-  } catch (err) {
-    console.error(err);
-    msg.textContent = "Could not connect to server.";
-  }
+  const res = await fetch("https://hashcheck.jamesxcarver.workers.dev/", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({ password: hash })
+  });
+
+  const data = await res.json();
+  document.getElementById("msg").textContent = data.message;
 }
 </script>
-
-
  </div>
  </main>
  <footer>
