@@ -41,12 +41,12 @@
  <p>I present to you a hacking challenge. There is no reward for completion other than personal glory.</p>
  <h3>Do you accept this challenge?</h3>
  <div>
-<div id="login" style="display:none;">
-  <input type="password" id="password" placeholder="Password">
-  <button onclick="login()">Login</button>
-  <p id="msg"></p>
-</div>
-<button onclick="this.style.display='none'; document.getElementById('login').style.display='block';">
+<h3>Do you accept this challenge?</h3>
+
+<button id="accept" onclick="
+  this.style.display='none';
+  document.getElementById('login').style.display='block';
+">
   Accept
 </button>
 
@@ -117,7 +117,6 @@ async function verifyCode() {
     const data = await res.json();
 
     document.getElementById("msg").textContent = data.message;
-
   } catch (error) {
     console.error(error);
     document.getElementById("msg").textContent = "Connection error.";
